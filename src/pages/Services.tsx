@@ -1,12 +1,23 @@
 import { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { services } from '../data/services';
+import { mensServices, services } from '../data/services';
 import Booking from './Booking';
 
 export default function Services() {
+  const [activeAudience, setActiveAudience] = useState<'WOMEN' | 'MEN'>('WOMEN');
   const [activeCategory, setActiveCategory] = useState(services[0].category);
   const [bookingOpen, setBookingOpen] = useState(false);
-  const categories = [...new Set(services.map(s => s.category))];
+  const audienceCategories = {
+    WOMEN: [...new Set(services.map(s => s.category))],
+    MEN: [...new Set(mensServices.map(s => s.category))],
+  };
+  const categories = audienceCategories[activeAudience];
+  const activeServices = activeAudience === 'MEN' ? mensServices : services;
+
+  const selectAudience = (audience: 'WOMEN' | 'MEN') => {
+    setActiveAudience(audience);
+    setActiveCategory(audienceCategories[audience][0]);
+  };
 
   return (
     <div className="bg-fiona-ivory pt-32 pb-24 min-h-screen">
@@ -16,6 +27,25 @@ export default function Services() {
           <motion.p className="text-fiona-black/70 max-w-2xl mx-auto tracking-wide" initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.14 }}>
             Experience luxury beauty treatments performed by trained professionals in our state-of-the-art facility.
           </motion.p>
+        </div>
+
+        <div className="flex justify-center gap-3 mb-10" role="tablist" aria-label="Service sections">
+          {(['WOMEN', 'MEN'] as const).map(audience => (
+            <button
+              key={audience}
+              type="button"
+              role="tab"
+              aria-selected={activeAudience === audience}
+              onClick={() => selectAudience(audience)}
+              className={`min-w-36 px-8 py-4 text-sm tracking-[0.2em] font-semibold border transition-colors ${
+                activeAudience === audience
+                  ? 'bg-fiona-burgundy text-fiona-ivory border-fiona-burgundy'
+                  : 'bg-white/60 text-fiona-burgundy border-fiona-taupe/30 hover:border-fiona-burgundy'
+              }`}
+            >
+              {audience === 'WOMEN' ? "WOMEN'S" : "MEN'S"}
+            </button>
+          ))}
         </div>
 
         {/* Desktop Layout */}
@@ -57,7 +87,7 @@ export default function Services() {
                 {activeCategory}
               </h2>
               <div className="flex flex-col gap-6">
-                {services.filter(s => s.category === activeCategory).map((service, idx) => (
+                {activeServices.filter(s => s.category === activeCategory).map((service, idx) => (
                   <motion.div key={`${activeCategory}-${service.name}-${idx}`} className="flex justify-between items-end group" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.35, delay: idx * 0.045 }}>
                     <div className="flex-1 pr-4 relative overflow-hidden">
                       <h3 className="font-medium text-fiona-burgundy group-hover:text-fiona-champagne transition-colors">{service.name}</h3>
@@ -86,7 +116,7 @@ export default function Services() {
           </div>
         </div>
       </div>
-      {bookingOpen && <Booking isModal initialType="Service" lockType onClose={() => setBookingOpen(false)} />}
+      {bookingOpen && <Booking isModal initialType="Service" lockType serviceOptions={activeServices} onClose={() => setBookingOpen(false)} />}
     </div>
   );
 }

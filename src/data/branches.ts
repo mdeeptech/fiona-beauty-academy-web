@@ -15,7 +15,7 @@ export const branches: Branch[] = [
     name: 'Guwahati Branch',
     image: '/Guwahati.jpeg',
     address: 'Fiona Beauty Academy, Lokhra Chariali, Opposite Hero Showroom, Guwahati-40',
-    contact: '+91 80112 98779',
+    contact: '093940 93331',
     mapsUrl: 'https://maps.google.com/?q=Lokhra+Chariali+Guwahati',
     instagramUrl: 'https://www.instagram.com/fionacademy.guwahati/',
     instagramHandle: '@fionacademy.guwahati'
@@ -25,7 +25,7 @@ export const branches: Branch[] = [
     name: 'Tinsukia Branch',
     image: '/tinsukia.avif',
     address: 'Ambika Giri Rai Chowdhury Path, Near Hotel Skyline, Rajendra Nagar, Hijiguri, Tinsukia, Assam 786126',
-    contact: '+91 80112 98779',
+    contact: '080112 98779',
     mapsUrl: 'https://maps.google.com/?q=Hijiguri+Tinsukia',
     instagramUrl: 'https://www.instagram.com/fionabeautyacademy/',
     instagramHandle: '@fionabeautyacademy'

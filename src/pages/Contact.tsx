@@ -5,6 +5,7 @@ import { MapPin, Phone, MessageCircle, Instagram, Facebook, Clock } from 'lucide
 
 export default function Contact() {
   const whatsappLink = `https://wa.me/${siteConfig.phone.replace(/[^0-9]/g, '')}?text=${encodeURIComponent(siteConfig.whatsappMessage.general)}`;
+  const guwahatiContact = branches.find(branch => branch.slug === 'guwahati')!.contact;
   const tinsukiaContact = branches.find(branch => branch.slug === 'tinsukia')!.contact;
 
   return (
@@ -30,7 +31,7 @@ export default function Contact() {
                 </div>
                 <div className="flex gap-3 items-center">
                   <Phone className="w-5 h-5 text-fiona-champagne shrink-0" />
-                  <a href={`tel:${siteConfig.phone}`} className="hover:text-fiona-burgundy transition-colors">{siteConfig.phone}</a>
+                  <a href={`tel:${guwahatiContact.replace(/\s/g, '')}`} className="hover:text-fiona-burgundy transition-colors">{guwahatiContact}</a>
                 </div>
                 <div className="flex gap-3 items-center">
                   <Clock className="w-5 h-5 text-fiona-champagne shrink-0" />

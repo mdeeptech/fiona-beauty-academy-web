@@ -2,16 +2,17 @@ import { useEffect, useState } from 'react';
 import { X } from 'lucide-react';
 import { siteConfig } from '../data/siteConfig';
 import { courses } from '../data/courses';
-import { services } from '../data/services';
+import { services as allServices, type Service } from '../data/services';
 
 interface BookingProps {
   isModal?: boolean;
   onClose?: () => void;
   initialType?: 'Course' | 'Service';
   lockType?: boolean;
+  serviceOptions?: Service[];
 }
 
-export default function Booking({ isModal = false, onClose, initialType = 'Course', lockType = false }: BookingProps) {
+export default function Booking({ isModal = false, onClose, initialType = 'Course', lockType = false, serviceOptions = allServices }: BookingProps) {
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
@@ -114,9 +115,9 @@ export default function Booking({ isModal = false, onClose, initialType = 'Cours
                   {formData.type === 'Course' ? (
                     courses.map(course => <option key={course.slug} value={course.title}>{course.title}</option>)
                   ) : (
-                    [...new Set(services.map(service => service.category))].map(category => (
+                    [...new Set(serviceOptions.map(service => service.category))].map(category => (
                       <optgroup key={category} label={category}>
-                        {services.filter(service => service.category === category).map(service => (
+                        {serviceOptions.filter(service => service.category === category).map(service => (
                           <option key={service.slug} value={`${service.name} (${service.category})`}>{service.name}</option>
                         ))}
                       </optgroup>
