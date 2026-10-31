@@ -26,11 +26,14 @@ const EMPTY_FORM: CallbackFormData = {
 const SHOWN_KEY = 'fiona_callback_popup_shown';
 const SUBMITTED_KEY = 'fiona_callback_popup_submitted';
 const EXIT_DURATION = 430;
-const GOOGLE_SHEETS_WEBHOOK_URL =
-  'https://script.google.com/macros/s/AKfycbxVGKNJT58SNQVBn5tWYi9iDOqiDl9QvihCootKYi4KMFnlu9vf2J82MbnNtSGVHMHc/exec';
+const CALLBACK_FORM_ENDPOINT = import.meta.env.VITE_CALLBACK_FORM_ENDPOINT;
 
 async function submitCallbackForm(payload: CallbackPayload) {
-  await fetch(GOOGLE_SHEETS_WEBHOOK_URL, {
+  if (!CALLBACK_FORM_ENDPOINT) {
+    throw new Error('Callback form endpoint is not configured.');
+  }
+
+  await fetch(CALLBACK_FORM_ENDPOINT, {
     method: 'POST',
     mode: 'no-cors',
     headers: { 'Content-Type': 'text/plain;charset=utf-8' },
