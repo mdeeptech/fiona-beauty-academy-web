@@ -2,7 +2,7 @@ export const siteConfig = {
   name: "Fiona Beauty Academy",
   legalName: "Fiona Beauty & Wellness Academy Private Limited",
   tagline: "Transforming passion into profession.",
-  phone: "+91 93940 93331",
+  phone: "+91 80112 98779",
   socials: {
     instagram: "https://instagram.com/fionabeautyacademy",
     facebook: "https://facebook.com/fionabeautyacademy",

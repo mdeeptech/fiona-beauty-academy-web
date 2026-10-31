@@ -15,7 +15,7 @@ export const branches: Branch[] = [
     name: 'Guwahati Branch',
     image: '/Guwahati.jpeg',
     address: 'Fiona Beauty Academy, Lokhra Chariali, Opposite Hero Showroom, Guwahati-40',
-    contact: '+91 93940 93331',
+    contact: '+91 80112 98779',
     mapsUrl: 'https://maps.google.com/?q=Lokhra+Chariali+Guwahati',
     instagramUrl: 'https://www.instagram.com/fionacademy.guwahati/',
     instagramHandle: '@fionacademy.guwahati'
