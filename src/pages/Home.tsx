@@ -165,7 +165,7 @@ export default function Home() {
             <p className="text-fiona-black/70 tracking-wide text-[14px] md:text-base">Industry-oriented training for your future.</p>
           </div>
           <Link to="/courses" className="inline-block mt-2 md:mt-0 shrink-0 border-b border-fiona-champagne text-fiona-burgundy pb-1 hover:text-fiona-champagne transition-colors uppercase tracking-widest text-[11px] md:text-xs font-semibold">
-            View All Courses Ã¢â€ â€™
+            View All Courses →
           </Link>
         </div>
 
