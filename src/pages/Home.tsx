@@ -258,17 +258,17 @@ export default function Home() {
                   <span className="student-review-focus">{review.focus}</span>
                 </div>
                 <blockquote>
-                  <span className="student-review-quote-mark" aria-hidden="true">Ã¢â‚¬Å“</span>
+                  <span className="student-review-quote-mark" aria-hidden="true">{"\u201C"}</span>
                   <p>{review.quote}</p>
                 </blockquote>
                 <p className="student-review-note">{review.note}</p>
                 <footer className="student-review-footer">
                   <div>
                     <strong>{review.name}</strong>
-                    <span>Student review Ã‚Â· {review.date}</span>
+                    <span>Student review {"\u00B7"} {review.date}</span>
                   </div>
                   <a href={studentReviewsUrl} target="_blank" rel="noreferrer" aria-label={`Read ${review.name}'s review on Justdial`}>
-                    Ã¢â€ â€”
+                    {"\u2197"}
                   </a>
                 </footer>
               </article>
@@ -276,7 +276,7 @@ export default function Home() {
           </div>
 
           <a className="student-reviews-source" href={studentReviewsUrl} target="_blank" rel="noreferrer">
-            READ ALL REVIEWS ON JUSTDIAL <span aria-hidden="true">Ã¢â€ â€”</span>
+            READ ALL REVIEWS ON JUSTDIAL <span aria-hidden="true">{"\u2197"}</span>
           </a>
         </div>
       </section>
